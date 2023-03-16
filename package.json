@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack serve --mode=development --config ./webpack/webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "webpack serve --mode=development --config ./webpack/webpack.dev.cjs",
+    "lint": "eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{js,jsx}'",
+    "prettify": "prettier . --write",
+    "prettier:check": "prettier . --check"
   },
   "keywords": [],
   "author": "Miguel Martínez",
@@ -20,7 +23,10 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "eslint": "^8.36.0",
+    "eslint-plugin-react": "^7.32.2",
     "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.4",
     "style-loader": "^3.3.2",
     "webpack": "^5.76.2",
     "webpack-cli": "^5.0.1",
