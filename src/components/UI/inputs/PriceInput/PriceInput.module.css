@@ -6,3 +6,7 @@ span {
   width: 5rem;
   height: 1rem;
 }
+
+.price_span {
+  user-select: none;
+}

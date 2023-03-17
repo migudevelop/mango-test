@@ -18,7 +18,7 @@ function Range({ min = 0, max = 100, minValue, maxValue }) {
 
   return (
     <div className={styles.range}>
-      <PriceInput min={min} max={max} value={minPrice} onChange={setMinPrice} />
+      <PriceInput min={min} max={max} value={minPrice} onBlur={setMinPrice} />
       <RangeSlider
         min={min}
         max={max}
@@ -27,7 +27,7 @@ function Range({ min = 0, max = 100, minValue, maxValue }) {
         handleOnMinChange={handleOnMinChange}
         handleOnMaxChange={handleOnMaxChange}
       />
-      <PriceInput min={min} max={max} value={maxPrice} onChange={setMaxPrice} />
+      <PriceInput min={min} max={max} value={maxPrice} onBlur={setMaxPrice} />
     </div>
   )
 }

@@ -7,3 +7,20 @@ export const moveToPosition = (ref, position) => {
 
 export const getRelativeMousePosition = (position, ref) =>
   position - ref.current.getBoundingClientRect().left
+
+export const getClosestValue = (rangeValues, currentValue, valueToAvoid) => {
+  if (rangeValues.length) {
+    let closest = rangeValues[0]
+    rangeValues.forEach((val) => {
+      if (
+        Math.abs(currentValue - val) < Math.abs(currentValue - closest) &&
+        val !== valueToAvoid
+      ) {
+        closest = val
+      }
+    })
+    return closest
+  }
+
+  return currentValue
+}

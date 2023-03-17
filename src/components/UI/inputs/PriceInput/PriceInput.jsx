@@ -1,39 +1,17 @@
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import PropTypes from 'prop-types'
 import styles from './PriceInput.module.css'
 import { formats } from '../../../../utils'
-
-const getValue = ({ min, max, value }) => {
-  if (value > max) return max
-  if (value < min) return min
-  value
-}
+import { usePriceInputState } from './hooks'
 
 function PriceInput({ max, min, value = 0, onBlur }) {
-  const [isEditable, setIsEditable] = useState(false)
-  const [currentValue, setCurrentValue] = useState(value)
-
-  useEffect(() => {
-    setCurrentValue(value)
-  }, [value])
-
-  const toggleIsEditable = () => {
-    setIsEditable((prev) => !prev)
-  }
-
-  const handleOnChange = (e) => {
-    const newValue = getValue({
-      min,
-      max,
-      value: e.target.value ?? 0
-    })
-    setCurrentValue(newValue)
-  }
-
-  const handleOnBlur = () => {
-    toggleIsEditable()
-    onBlur && onBlur(currentValue)
-  }
+  const {
+    isEditable,
+    currentValue,
+    toggleIsEditable,
+    handleOnChange,
+    handleOnBlur
+  } = usePriceInputState({ min, max, value, onBlur })
 
   return (
     <div className={`${styles.price_wrapper}`}>
@@ -55,7 +33,7 @@ function PriceInput({ max, min, value = 0, onBlur }) {
         />
       )}
       {!isEditable && (
-        <span onClick={toggleIsEditable}>
+        <span className={styles.price_span} onClick={toggleIsEditable}>
           {formats.numberToCurrency({ number: currentValue })}
         </span>
       )}
