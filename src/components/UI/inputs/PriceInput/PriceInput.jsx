@@ -4,14 +4,14 @@ import styles from './PriceInput.module.css'
 import { formats } from '../../../../utils'
 import { usePriceInputState } from './hooks'
 
-function PriceInput({ max, min, value = 0, onBlur }) {
+function PriceInput({ disabled = true, max, min, value = 0, onBlur }) {
   const {
     isEditable,
     currentValue,
     toggleIsEditable,
     handleOnChange,
     handleOnBlur
-  } = usePriceInputState({ min, max, value, onBlur })
+  } = usePriceInputState({ disabled, min, max, value, onBlur })
 
   return (
     <div className={`${styles.price_wrapper}`}>
@@ -42,6 +42,7 @@ function PriceInput({ max, min, value = 0, onBlur }) {
 }
 
 PriceInput.propTypes = {
+  disabled: PropTypes.bool,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,

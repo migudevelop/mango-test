@@ -6,7 +6,13 @@ const getValue = ({ min, max, value }) => {
   return value
 }
 
-export default function usePriceInputState({ min, max, value, onBlur }) {
+export default function usePriceInputState({
+  disabled,
+  min,
+  max,
+  value,
+  onBlur
+}) {
   const [isEditable, setIsEditable] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
 
@@ -15,7 +21,9 @@ export default function usePriceInputState({ min, max, value, onBlur }) {
   }, [value])
 
   const toggleIsEditable = () => {
-    setIsEditable((prev) => !prev)
+    if (!disabled) {
+      setIsEditable((prev) => !prev)
+    }
   }
 
   const handleOnChange = (e) => {
