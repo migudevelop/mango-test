@@ -1,0 +1,17 @@
+.range {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  gap: 1rem;
+}
+
+.range > div:first-child {
+  display: flex;
+  justify-content: flex-end;
+  text-align: end;
+}
+
+.range > div:last-child {
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+}

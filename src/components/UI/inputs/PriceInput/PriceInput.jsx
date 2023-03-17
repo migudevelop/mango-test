@@ -1,20 +1,38 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './PriceInput.module.css'
 import { formats } from '../../../../utils'
 
-function PriceInput({ value = 0, onChange }) {
+const getValue = ({ min, max, value }) => {
+  if (value > max) return max
+  if (value < min) return min
+  value
+}
+
+function PriceInput({ max, min, value = 0, onBlur }) {
   const [isEditable, setIsEditable] = useState(false)
   const [currentValue, setCurrentValue] = useState(value)
+
+  useEffect(() => {
+    setCurrentValue(value)
+  }, [value])
 
   const toggleIsEditable = () => {
     setIsEditable((prev) => !prev)
   }
 
   const handleOnChange = (e) => {
-    const newValue = e.target.value
+    const newValue = getValue({
+      min,
+      max,
+      value: e.target.value ?? 0
+    })
     setCurrentValue(newValue)
-    onChange && onChange(newValue)
+  }
+
+  const handleOnBlur = () => {
+    toggleIsEditable()
+    onBlur && onBlur(currentValue)
   }
 
   return (
@@ -23,14 +41,16 @@ function PriceInput({ value = 0, onChange }) {
         <input
           type="number"
           autoFocus
+          max={max}
+          min={min}
           className={styles.price_input}
           value={currentValue}
           onKeyUp={(ev) => {
             if (ev.key === 'Enter') {
-              toggleIsEditable()
+              handleOnBlur()
             }
           }}
-          onBlur={toggleIsEditable}
+          onBlur={handleOnBlur}
           onChange={handleOnChange}
         />
       )}
@@ -44,8 +64,10 @@ function PriceInput({ value = 0, onChange }) {
 }
 
 PriceInput.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired
+  onBlur: PropTypes.func.isRequired
 }
 
 export default memo(PriceInput)
