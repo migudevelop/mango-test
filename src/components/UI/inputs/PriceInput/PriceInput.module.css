@@ -1,0 +1,8 @@
+.price_wrapper {
+}
+
+.price_wrapper > input,
+span {
+  width: 5rem;
+  height: 1rem;
+}
