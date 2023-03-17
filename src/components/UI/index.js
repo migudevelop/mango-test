@@ -1,3 +1,3 @@
 export * from './RangeSlider'
-export * from './Range'
+export * from './PriceRange'
 export * from './inputs'
