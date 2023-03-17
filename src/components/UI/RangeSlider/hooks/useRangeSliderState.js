@@ -8,6 +8,7 @@ const useRangeSliderState = ({
   min,
   minValue,
   maxValue,
+  ranges,
   handleOnMinChange,
   handleOnMaxChange
 }) => {
@@ -25,6 +26,8 @@ const useRangeSliderState = ({
   const {
     getMinMovedX,
     getMaxMovedX,
+    getMinAllowedPosition,
+    getMaxAllowedPosition,
     getPositionByValue,
     getValueByPosition,
     updateActiveRangePosition
@@ -46,10 +49,20 @@ const useRangeSliderState = ({
       } else if (ref === maxDotRef) {
         movedX = getMaxMovedX(movedX)
       }
-      const value = getValueByPosition(movedX)
+      const valueByPosition = getValueByPosition(movedX)
       if (ref === minDotRef) {
+        const value = positionUtils.getValuePosition(
+          valueByPosition,
+          getMaxAllowedPosition(),
+          ranges
+        )
         handleOnMinChange(value)
       } else if (ref === maxDotRef) {
+        const value = positionUtils.getValuePosition(
+          valueByPosition,
+          getMinAllowedPosition(),
+          ranges
+        )
         handleOnMaxChange(value)
       }
 

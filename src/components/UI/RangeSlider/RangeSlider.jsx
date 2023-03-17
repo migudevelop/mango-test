@@ -7,6 +7,7 @@ import { useRangeSliderState } from './hooks'
 function RangeSlider({
   min = 0,
   max = 100,
+  ranges = [],
   minValue,
   maxValue,
   handleOnMinChange = () => null,
@@ -20,6 +21,7 @@ function RangeSlider({
       min,
       minValue,
       maxValue,
+      ranges,
       handleOnMinChange,
       handleOnMaxChange
     })
@@ -37,6 +39,7 @@ function RangeSlider({
           className={styles.slider_dot}
           onMouseDown={enableDrag}
           onMouseUp={disableDrag}
+          onMouseLeave={disableDrag}
           onMouseMove={(e) => handleOnMouseMove(e, minDotRef)}
         />
         <span
@@ -44,6 +47,7 @@ function RangeSlider({
           className={styles.slider_dot}
           onMouseDown={enableDrag}
           onMouseUp={disableDrag}
+          onMouseLeave={disableDrag}
           onMouseMove={(e) => handleOnMouseMove(e, maxDotRef)}
         />
       </div>
@@ -54,6 +58,7 @@ function RangeSlider({
 RangeSlider.prototype = {
   min: Proptypes.number,
   max: Proptypes.number,
+  ranges: Proptypes.arrayOf(Proptypes.number),
   minValue: Proptypes.number,
   maxValue: Proptypes.number,
   handleOnMinChange: Proptypes.number,

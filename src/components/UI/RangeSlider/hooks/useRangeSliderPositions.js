@@ -35,21 +35,21 @@ export default function useRangeSliderPositions({
     return Math.round(value * 100) / 100
   }
 
-  const getMinHandlerMaxAllowedPosition = () => {
-    const securityMargin = positionUtils.getOffsetWith(minDotRef) / 2
-    const maxHandlerPosition = positionUtils.getOffsetLeftPosition(maxDotRef)
-    return maxHandlerPosition - securityMargin
+  const getMinAllowedPosition = () => {
+    const margin = positionUtils.getOffsetWith(maxDotRef) / 2
+    const minPosition = positionUtils.getOffsetLeftPosition(minDotRef)
+    return minPosition + margin
   }
 
-  const getMaxHandlerMinAllowedPosition = () => {
-    const securityMargin = positionUtils.getOffsetWith(maxDotRef) / 2
-    const minHandlerPosition = positionUtils.getOffsetLeftPosition(minDotRef)
-    return minHandlerPosition + securityMargin
+  const getMaxAllowedPosition = () => {
+    const margin = positionUtils.getOffsetWith(minDotRef) / 2
+    const maxPosition = positionUtils.getOffsetLeftPosition(maxDotRef)
+    return maxPosition - margin
   }
 
   const getMinMovedX = (movedX) => {
     let minMovedX = movedX
-    const minHandlerMaxAllowedPosition = getMinHandlerMaxAllowedPosition()
+    const minHandlerMaxAllowedPosition = getMaxAllowedPosition()
     if (minMovedX >= minHandlerMaxAllowedPosition) {
       minMovedX = minHandlerMaxAllowedPosition
     }
@@ -63,7 +63,7 @@ export default function useRangeSliderPositions({
   const getMaxMovedX = (movedX) => {
     let maxMovedX = movedX
     const parentOffsetWidth = positionUtils.getOffsetWith(sliderRef)
-    const maxHandlerMinAllowedPosition = getMaxHandlerMinAllowedPosition()
+    const maxHandlerMinAllowedPosition = getMinAllowedPosition()
     if (maxMovedX <= maxHandlerMinAllowedPosition) {
       maxMovedX = maxHandlerMinAllowedPosition
     }
@@ -77,6 +77,8 @@ export default function useRangeSliderPositions({
   return {
     getMinMovedX,
     getMaxMovedX,
+    getMinAllowedPosition,
+    getMaxAllowedPosition,
     getPositionByValue,
     getValueByPosition,
     updateActiveRangePosition
