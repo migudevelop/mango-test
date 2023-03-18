@@ -1,0 +1,46 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+
+body {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 3rem;
+}
+
+main {
+  margin: 5rem 2rem 0;
+}
+
+@media (min-width: 959px) {
+  main {
+    margin: 5rem 10rem 0;
+  }
+}
+
+@media (min-width: 1279px) {
+  main {
+    margin: 5rem 20rem 0;
+  }
+}
