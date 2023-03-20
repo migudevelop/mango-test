@@ -11,7 +11,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime'
+    'plugin:react/jsx-runtime',
+    'plugin:jest/recommended'
   ],
   overrides: [],
   parserOptions: {
@@ -21,7 +22,7 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
   rules: {
     'react/prop-types': 'off'
   }
