@@ -49,6 +49,9 @@ module.exports = (_env, { mode }) => {
       ]
     },
     resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../src')
+      },
       extensions: ['.js', '.jsx']
     },
     plugins: [htmlWebpackPlugin]

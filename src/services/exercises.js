@@ -1,5 +1,5 @@
-import { useFetch } from '../hooks'
-import { constants, adapters } from '../utils'
+import { useFetch } from '@/hooks'
+import { constants, adapters } from '@/utils'
 
 export const getMinMax = () => {
   const requestState = useFetch(

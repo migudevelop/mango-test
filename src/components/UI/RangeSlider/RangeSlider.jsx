@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import Proptypes from 'prop-types'
-import { useDrag } from '../../../hooks'
+import { useDrag } from '@/hooks'
 import styles from './RangeSlider.module.css'
 import { useRangeSliderState } from './hooks'
 

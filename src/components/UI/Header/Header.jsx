@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { NavLink } from 'react-router-dom'
-import { ROUTES_LINKS } from '../../../routes'
+import { ROUTES_LINKS } from '@/routes'
 import styles from './Header.module.css'
 
 function Header() {

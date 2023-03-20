@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react'
-import { positionUtils } from '../../../../utils'
+import { positionUtils } from '@/utils'
 import useRangeSliderPositions from './useRangeSliderPositions'
 
 const useRangeSliderState = ({

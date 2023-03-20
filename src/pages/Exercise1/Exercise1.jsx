@@ -1,9 +1,9 @@
-import { FeedbackState, PriceRange } from '../../components/UI'
-import { getMinMax } from '../../services/exercises'
+import { FeedbackState, PriceRange } from '@/components'
+import { exercisesServices } from '@/services'
 import styles from './Exercise1.module.css'
 
 function Exercise1() {
-  const { data, isLoading, error } = getMinMax()
+  const { data, isLoading, error } = exercisesServices.getMinMax()
   return (
     <section className={styles.exercise1_wrapper}>
       <h1>Normal price slider </h1>

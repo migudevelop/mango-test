@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import PropTypes from 'prop-types'
 import styles from './PriceInput.module.css'
-import { formats } from '../../../../utils'
+import { formats } from '@/utils'
 import { usePriceInputState } from './hooks'
 
 function PriceInput({ disabled = true, max, min, value = 0, onBlur }) {

@@ -1,9 +1,9 @@
-import { FeedbackState, PriceRange } from '../../components/UI'
-import { getRanges } from '../../services/exercises'
+import { FeedbackState, PriceRange } from '@/components'
+import { exercisesServices } from '@/services'
 import styles from './Exercise2.module.css'
 
 function Exercise2() {
-  const { data, isLoading, error } = getRanges()
+  const { data, isLoading, error } = exercisesServices.getRanges()
   return (
     <section className={styles.exercise2_wrapper}>
       <h1>Price slider with ranges</h1>

@@ -1,4 +1,4 @@
-import { positionUtils } from '../../../../utils'
+import { positionUtils } from '@/utils'
 
 export default function useRangeSliderPositions({
   sliderRef,
