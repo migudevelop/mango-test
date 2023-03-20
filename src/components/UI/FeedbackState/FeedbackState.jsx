@@ -1,8 +1,9 @@
 import { memo } from 'react'
+import PropTypes from 'prop-types'
 import { CircleLoader } from '../Loaders/CircleLoader'
 import styles from './FeedbackState.module.css'
 
-function FeedbackState({ children, isLoading, error = null }) {
+function FeedbackState({ children, isLoading = false, error = null }) {
   const hasError = error != null
   return (
     <>
@@ -21,6 +22,12 @@ function FeedbackState({ children, isLoading, error = null }) {
       {!isLoading && !hasError && children}
     </>
   )
+}
+
+FeedbackState.propTypes = {
+  children: PropTypes.node.isRequired,
+  isLoading: PropTypes.number,
+  error: PropTypes.string
 }
 
 export default memo(FeedbackState)

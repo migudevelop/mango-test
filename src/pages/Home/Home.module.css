@@ -1,0 +1,10 @@
+.home_wrapper {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home_title {
+  font-size: 2rem;
+}
