@@ -1,0 +1,34 @@
+@keyframes spin {
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.svg {
+  width: 20vw;
+  height: 20vh;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+.svg_circle {
+  fill: none;
+  stroke: #2596be;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  animation: dash 2.5s ease-in-out infinite;
+}
