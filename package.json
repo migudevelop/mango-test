@@ -5,15 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run mock:server\" \"npm run start:dev\"",
-    "start:dev": "webpack serve --mode=development --config ./webpack/webpack.dev.cjs",
+    "start:dev": "webpack serve --mode=development --config ./configs/webpack/webpack.dev.cjs",
     "mock:server": "npx json-server --watch mocks/db.json --port 3005",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{js,jsx}'",
     "prettify": "prettier . --write",
     "prettier:check": "prettier . --check",
-    "test": "jest --config ./jest/jest.config.cjs --colors",
-    "test:watch": "jest --config ./jest/jest.config.cjs --watch --colors",
-    "test:coverage": "jest --config ./jest/jest.config.cjs --coverage --colors"
+    "test": "jest --config ./configs/jest/jest.config.cjs --colors",
+    "test:watch": "jest --config ./configs/jest/jest.config.cjs --watch --colors",
+    "test:coverage": "jest --config ./configs/jest/jest.config.cjs --coverage --colors"
   },
   "keywords": [],
   "author": "Miguel Martínez",

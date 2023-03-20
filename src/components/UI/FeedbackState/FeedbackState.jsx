@@ -26,7 +26,7 @@ function FeedbackState({ children, isLoading = false, error = null }) {
 
 FeedbackState.propTypes = {
   children: PropTypes.node.isRequired,
-  isLoading: PropTypes.number,
+  isLoading: PropTypes.bool,
   error: PropTypes.string
 }
 
