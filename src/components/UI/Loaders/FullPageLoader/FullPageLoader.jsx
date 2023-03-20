@@ -4,7 +4,7 @@ import classes from './FullPageLoader.module.css'
 
 function FullPageLoader() {
   return (
-    <div className={classes.fullPageLoader}>
+    <div data-testid="fullpage-loader" className={classes.fullPageLoader}>
       <CircleLoader />
     </div>
   )

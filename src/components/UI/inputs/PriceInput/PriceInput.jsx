@@ -17,6 +17,7 @@ function PriceInput({ disabled = true, max, min, value = 0, onBlur }) {
     <div className={`${styles.price_wrapper}`}>
       {isEditable && (
         <input
+          data-testid="price-input"
           type="number"
           autoFocus
           max={max}

@@ -10,10 +10,10 @@ function Header() {
   }
 
   return (
-    <header>
+    <header role="header">
       <nav className={styles.navbar}>
         <NavLink className={styles.navbar_logo} to={ROUTES_LINKS.HOME}>
-          Logo
+          Range App
         </NavLink>
         <ul className={styles.navbar_list}>
           <li className={styles.navbar_item}>
