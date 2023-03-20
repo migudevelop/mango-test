@@ -1,0 +1,33 @@
+.navbar_list {
+  display: none;
+}
+
+.navbar_item {
+  min-width: 5rem;
+  text-align: center;
+  padding-block: 1rem;
+}
+
+.navbar_link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.navbar_link:hover {
+  color: var(--terciary-color);
+}
+
+.navbar_link-active {
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--terciary-color);
+  color: var(--terciary-color);
+}
+
+@media (min-width: 959px) {
+  .navbar_list {
+    display: inline-flex;
+    list-style: none;
+    font-size: 1.25rem;
+    gap: 1rem;
+  }
+}

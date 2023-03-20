@@ -4,7 +4,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.87);
+  background-color: var(--secondary-color);
   z-index: 2;
 }
 
@@ -18,42 +18,8 @@ header {
 }
 
 .navbar_logo {
-  color: #fff;
+  color: var(--primary-color);
   font-size: 2rem;
   text-transform: uppercase;
   text-decoration: none;
-}
-
-.navbar_list {
-  display: none;
-}
-
-.navbar_item {
-  min-width: 5rem;
-  text-align: center;
-  padding-block: 1rem;
-}
-
-.navbar_link {
-  color: #fff;
-  text-decoration: none;
-}
-
-.navbar_link:hover {
-  color: #3ccfd5;
-}
-
-.navbar_link-active {
-  padding-bottom: 0.5rem;
-  border-bottom: 3px solid #3ccfd5;
-  color: #3ccfd5;
-}
-
-@media (min-width: 959px) {
-  .navbar_list {
-    display: inline-flex;
-    list-style: none;
-    font-size: 1.25rem;
-    gap: 1rem;
-  }
 }
