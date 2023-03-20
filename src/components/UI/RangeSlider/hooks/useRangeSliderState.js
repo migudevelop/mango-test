@@ -48,6 +48,9 @@ const useRangeSliderState = ({
       getMaxAllowedPosition(),
       ranges
     )
+    if (ranges.length > 0 && value === maxValue) {
+      return
+    }
     handleOnMinChange(value)
     paintUI(minDotRef, movedPosition)
   }
@@ -60,6 +63,9 @@ const useRangeSliderState = ({
       getMinAllowedPosition(),
       ranges
     )
+    if (ranges.length > 0 && value === minValue) {
+      return
+    }
     handleOnMaxChange(value)
     paintUI(maxDotRef, movedPosition)
   }
