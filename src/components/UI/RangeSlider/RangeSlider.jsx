@@ -14,17 +14,24 @@ function RangeSlider({
   handleOnMaxChange = () => null
 }) {
   const { isDragActive, enableDrag, disableDrag } = useDrag()
-  const { sliderRef, activeRef, maxDotRef, minDotRef, handleOnMouseMove } =
-    useRangeSliderState({
-      isDragActive,
-      max,
-      min,
-      minValue,
-      maxValue,
-      ranges,
-      handleOnMinChange,
-      handleOnMaxChange
-    })
+  const {
+    sliderRef,
+    activeRef,
+    maxDotRef,
+    minDotRef,
+    handleOnMouseMove,
+    handleOnMinMove,
+    handleOnMaxMove
+  } = useRangeSliderState({
+    isDragActive,
+    max,
+    min,
+    minValue,
+    maxValue,
+    ranges,
+    handleOnMinChange,
+    handleOnMaxChange
+  })
 
   return (
     <div
@@ -40,7 +47,7 @@ function RangeSlider({
           onMouseDown={enableDrag}
           onMouseUp={disableDrag}
           onMouseLeave={disableDrag}
-          onMouseMove={(e) => handleOnMouseMove(e, minDotRef)}
+          onMouseMove={(e) => handleOnMouseMove(e, handleOnMinMove)}
         />
         <span
           ref={maxDotRef}
@@ -48,7 +55,7 @@ function RangeSlider({
           onMouseDown={enableDrag}
           onMouseUp={disableDrag}
           onMouseLeave={disableDrag}
-          onMouseMove={(e) => handleOnMouseMove(e, maxDotRef)}
+          onMouseMove={(e) => handleOnMouseMove(e, handleOnMaxMove)}
         />
       </div>
     </div>

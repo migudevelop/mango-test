@@ -7,6 +7,10 @@ span {
   height: 1rem;
 }
 
+.price_input {
+  padding: 0.5rem 0.25rem;
+}
+
 .price_span {
   user-select: none;
 }

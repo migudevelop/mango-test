@@ -40,34 +40,39 @@ const useRangeSliderState = ({
     minDotRef
   })
 
-  const handleOnMouseMove = (e, ref) => {
+  const handleOnMinMove = (movedX) => {
+    const movedPosition = getMinMovedX(movedX)
+    const valueByPosition = getValueByPosition(movedPosition)
+    const value = positionUtils.getValuePosition(
+      valueByPosition,
+      getMaxAllowedPosition(),
+      ranges
+    )
+    handleOnMinChange(value)
+    paintUI(minDotRef, movedPosition)
+  }
+
+  const handleOnMaxMove = (movedX) => {
+    const movedPosition = getMaxMovedX(movedX)
+    const valueByPosition = getValueByPosition(movedPosition)
+    const value = positionUtils.getValuePosition(
+      valueByPosition,
+      getMinAllowedPosition(),
+      ranges
+    )
+    handleOnMaxChange(value)
+    paintUI(maxDotRef, movedPosition)
+  }
+
+  const paintUI = (ref, position) => {
+    positionUtils.moveToPosition(ref, position)
+    updateActiveRangePosition()
+  }
+
+  const handleOnMouseMove = (e, movedFn) => {
     if (isDragActive) {
       let movedX = positionUtils.getRelativeMousePosition(e.clientX, sliderRef)
-
-      if (ref === minDotRef) {
-        movedX = getMinMovedX(movedX)
-      } else if (ref === maxDotRef) {
-        movedX = getMaxMovedX(movedX)
-      }
-      const valueByPosition = getValueByPosition(movedX)
-      if (ref === minDotRef) {
-        const value = positionUtils.getValuePosition(
-          valueByPosition,
-          getMaxAllowedPosition(),
-          ranges
-        )
-        handleOnMinChange(value)
-      } else if (ref === maxDotRef) {
-        const value = positionUtils.getValuePosition(
-          valueByPosition,
-          getMinAllowedPosition(),
-          ranges
-        )
-        handleOnMaxChange(value)
-      }
-
-      positionUtils.moveToPosition(ref, movedX)
-      updateActiveRangePosition()
+      movedFn(movedX)
     }
   }
 
@@ -76,7 +81,9 @@ const useRangeSliderState = ({
     activeRef,
     maxDotRef,
     minDotRef,
-    handleOnMouseMove
+    handleOnMouseMove,
+    handleOnMinMove,
+    handleOnMaxMove
   }
 }
 
