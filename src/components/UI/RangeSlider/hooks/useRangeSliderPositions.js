@@ -49,9 +49,9 @@ export default function useRangeSliderPositions({
 
   const getMinMovedX = (movedX) => {
     let minMovedX = movedX
-    const minHandlerMaxAllowedPosition = getMaxAllowedPosition()
-    if (minMovedX >= minHandlerMaxAllowedPosition) {
-      minMovedX = minHandlerMaxAllowedPosition
+    const maxAllowedPosition = getMaxAllowedPosition()
+    if (minMovedX >= maxAllowedPosition) {
+      minMovedX = maxAllowedPosition
     }
 
     if (minMovedX < 0) {
@@ -63,9 +63,9 @@ export default function useRangeSliderPositions({
   const getMaxMovedX = (movedX) => {
     let maxMovedX = movedX
     const parentOffsetWidth = positionUtils.getOffsetWith(sliderRef)
-    const maxHandlerMinAllowedPosition = getMinAllowedPosition()
-    if (maxMovedX <= maxHandlerMinAllowedPosition) {
-      maxMovedX = maxHandlerMinAllowedPosition
+    const minAllowedPosition = getMinAllowedPosition()
+    if (maxMovedX <= minAllowedPosition) {
+      maxMovedX = minAllowedPosition
     }
 
     if (maxMovedX > parentOffsetWidth) {
